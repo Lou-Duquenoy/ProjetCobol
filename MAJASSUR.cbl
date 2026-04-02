@@ -215,7 +215,7 @@
            PERFORM CLOSE-STAT
 
            STOP RUN.
-           .
+           
 
       *===============================================================*
       * Analyse du code mouvement                                      *
@@ -340,30 +340,30 @@
       *===============================================================*
       * Lecture d'un assuré par clé                                   *
       *===============================================================*
-       READ-ASSURES.
-           MOVE 'ACCFIC' TO WS-ACC
+      * READ-ASSURES.
+      *    MOVE 'ACCFIC' TO WS-ACC
 
-           MOVE 'KSDS'   TO Z-NOM-FICHIER
-           MOVE 02       TO Z-CODE-FONCTION
-           MOVE 00       TO Z-CODE-RETOUR
-           MOVE SPACES   TO Z-ENREGISTREMENT
+      *    MOVE 'KSDS'   TO Z-NOM-FICHIER
+      *    MOVE 02       TO Z-CODE-FONCTION
+      *    MOVE 00       TO Z-CODE-RETOUR
+      *    MOVE SPACES   TO Z-ENREGISTREMENT
 
-           MOVE F-MAT TO Z-ENREGISTREMENT(1:6)
+      *    MOVE F-MAT TO Z-ENREGISTREMENT(1:6)
 
-           CALL WS-ACC USING Z-COM
+      *    CALL WS-ACC USING Z-COM
 
-           EVALUATE Z-CODE-RETOUR
-               WHEN 00
-                   ADD 1 TO WS-NB-ASS-LUS
-                   MOVE Z-ENREGISTREMENT TO WS-BUFFER
+      *    EVALUATE Z-CODE-RETOUR
+      *        WHEN 00
+      *            ADD 1 TO WS-NB-ASS-LUS
+      *            MOVE Z-ENREGISTREMENT TO WS-BUFFER
 
-               WHEN 23
-                   CONTINUE
+      *        WHEN 23
+      *            CONTINUE
 
-               WHEN 99
-                   ADD 1 TO WS-NB-ANOM
-           END-EVALUATE
-           .
+      *        WHEN 99
+      *            ADD 1 TO WS-NB-ANOM
+      *    END-EVALUATE
+      *    .
 
       *===============================================================*
       * Fermeture des fichiers                                         *
